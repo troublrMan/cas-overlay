@@ -1,0 +1,14 @@
+<project name="cas-overlay" default="sync_ect_cas" basedir=".">
+    <target name="sync_ect_cas">
+
+    	<delete verbose="true" includeEmptyDirs="true">
+    	  <fileset dir="/etc/cas" includes="**/*" defaultexcludes="no"/>
+    	</delete>
+    
+        <copy verbose="true" todir="/etc/cas">
+            <fileset dir="cas-server-overlay/etc" includes="**/*" />
+            <fileset dir="cas-management-overlay/etc" includes="**/*" />
+        </copy>
+
+    </target>
+</project>
