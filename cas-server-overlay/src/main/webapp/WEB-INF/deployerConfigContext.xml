@@ -108,6 +108,7 @@
             <map>
                 <entry key="casuser" value="Mellon"/>
                 <entry key="gino" value="gino"/>
+                <entry key="pino" value="pino"/>
             </map>
         </property>
     </bean>

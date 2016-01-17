@@ -27,8 +27,8 @@
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n"/>
         </Console>
-        <RollingFile name="file" fileName="logs/sto-cas-server.log" append="true"
-                     filePattern="cas-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingFile name="file" fileName="logs/cas.log" append="true"
+                     filePattern="logs/cas-%d{yyyy-MM-dd-HH}-%i.log">
             <PatternLayout pattern="%d %p [%c] - %m%n"/>
             <Policies>
                 <OnStartupTriggeringPolicy />
@@ -36,8 +36,8 @@
                 <TimeBasedTriggeringPolicy />
             </Policies>
         </RollingFile>
-        <RollingFile name="perfFileAppender" fileName="logs/sto-perfStats-server.log" append="true"
-                     filePattern="perfStats-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingFile name="perfFileAppender" fileName="logs/perfStats-server.log" append="true"
+                     filePattern="logs/perfStats-%d{yyyy-MM-dd-HH}-%i.log">
             <PatternLayout pattern="%m%n"/>
             <Policies>
                 <OnStartupTriggeringPolicy />

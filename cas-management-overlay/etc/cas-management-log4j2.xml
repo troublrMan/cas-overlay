@@ -25,8 +25,8 @@
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n"/>
         </Console>
-        <RollingFile name="cas-management" fileName="cas-management.log" append="true"
-                     filePattern="cas-management-%d{yyyy-MM-dd-HH}-%i.log.gz">
+        <RollingFile name="cas-management" fileName="logs/cas-management.log" append="true"
+                     filePattern="logs/cas-management-%d{yyyy-MM-dd-HH}-%i.log.gz">
             <PatternLayout pattern="%d %p [%c] - %m%n"/>
             <Policies>
                 <OnStartupTriggeringPolicy />
