@@ -10,4 +10,10 @@
         </copy>
 
     </target>
+	
+	<target name="tomcat_deploy">
+	  <exec executable="/bin/bash">
+	    <arg value="tomcat.sh"/>
+	  </exec>
+	</target>
 </project>
