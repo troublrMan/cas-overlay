@@ -62,6 +62,7 @@
                    -->
                 <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
                 <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
+                <entry key-ref="customDbAuthHandler" value-ref="primaryPrincipalResolver" />
             </map>
         </constructor-arg>
 
@@ -107,8 +108,7 @@
         <property name="users">
             <map>
                 <entry key="casuser" value="Mellon"/>
-                <entry key="gino" value="gino"/>
-                <entry key="pino" value="pino"/>
+                <entry key="fisio" value="fisio"/>
             </map>
         </property>
     </bean>
@@ -168,4 +168,48 @@
               p:serviceTicketCountWarnThreshold="5000"
               p:sessionCountWarnThreshold="100000" />
     </util:list>
+    
+    
+    <!-- 
+    	http://jasig.github.io/cas/4.1.x/installation/Database-Authentication.html
+    	
+    		- datasource bean definition
+    		- password encoder bean definition (same as app-one)
+    		- dbAuthHandler with datasource-ref, encoder ref and custom query
+    		- 
+     -->
+	<bean id="dataSource"
+	  class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	  p:driverClass="${database.driverClass}"
+	  p:jdbcUrl="${database.url}"
+	  p:user="${database.user}"
+	  p:password="${database.password}"
+	  p:initialPoolSize="${database.pool.minSize}"
+	  p:minPoolSize="${database.pool.minSize}"
+	  p:maxPoolSize="${database.pool.maxSize}"
+	  p:maxIdleTimeExcessConnections="${database.pool.maxIdleTime}"
+	  p:checkoutTimeout="${database.pool.maxWait}"
+	  p:acquireIncrement="${database.pool.acquireIncrement}"
+	  p:acquireRetryAttempts="${database.pool.acquireRetryAttempts}"
+	  p:acquireRetryDelay="${database.pool.acquireRetryDelay}"
+	  p:idleConnectionTestPeriod="${database.pool.idleConnectionTestPeriod}"
+	  p:preferredTestQuery="${database.pool.connectionHealthQuery}" />
+    
+    
+    
+    
+    <bean id="customPasswordEncoder" class="com.spuddu.cas.authentication.handler.SpringPasswordEncoder">
+    	<property name="springPasswordEncoderImplementation">
+    		<bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    	</property>
+    </bean>
+
+
+	<bean id="customDbAuthHandler"
+	      class="com.spuddu.cas.adaptors.jdbc.CustomQueryDatabaseAuthenticationHandler"
+	      p:dataSource-ref="dataSource"
+	      p:passwordEncoder-ref="customPasswordEncoder"
+	      p:sql="select password from users where username=? and active=true" />
+
+    
 </beans>

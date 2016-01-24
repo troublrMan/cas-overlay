@@ -40,7 +40,7 @@
         
     </description>
 
-    <util:properties id="casProperties" location="file:/etc/cas/cas.properties"/>
+    <util:properties id="casProperties"  location="file:/etc/cas/cas.properties,file:/etc/cas/database.properties"/>
 
     <context:property-placeholder properties-ref="casProperties"/>
 

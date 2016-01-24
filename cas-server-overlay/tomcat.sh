@@ -17,7 +17,10 @@ echo $TOMCAT_DIR/webapps/cas "deleted"
 rm -rf $TOMCAT_DIR/work/*
 echo $TOMCAT_DIR/work/* "cleaned"
 
+echo "building war"
 mvn clean package
+
+echo "copying war"
 cp -v target/cas.war $TOMCAT_DIR/webapps
 
 

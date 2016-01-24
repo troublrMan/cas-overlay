@@ -7,24 +7,16 @@
         <artifactId>cas-overlay</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-	<groupId>com.spuddu</groupId>
 	<artifactId>cas-server-overlay</artifactId>
-	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>cas-server-overlay</name>
 	<url>http://maven.apache.org</url>
 
-<!--
 	<properties>
-		<cas.version>4.1.3</cas.version>
-		<maven-jetty-plugin.version>9.3.6.v20151106</maven-jetty-plugin.version>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<c3p0.version>0.9.1.2</c3p0.version>
 	</properties>
--->
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -93,6 +85,26 @@
 			<type>war</type>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.jasig.cas</groupId>
+		    <artifactId>cas-server-support-jdbc</artifactId>
+		    <version>${cas.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>c3p0</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>${c3p0.version}</version>
+		</dependency>
+		
+		<!-- jdbc -->
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+			<scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 
 </project>
