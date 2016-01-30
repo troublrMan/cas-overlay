@@ -1,16 +1,17 @@
 <project name="cas-server" default="sync_ect_cas" basedir=".">
 
 	<target name="sync_ect_cas">
-		<!--
-		<delete verbose="true" includeEmptyDirs="true">
-			<fileset dir="/etc/cas" includes="**/*" defaultexcludes="no"/>
-		</delete>
-		-->
 		<copy verbose="true" todir="/etc/cas" overwrite="true">
 			<fileset dir="etc" includes="**/*" />
 		</copy>
 	</target>
-	
+
+	<target name="backup_json_services">
+		<copy verbose="true" todir="etc/cas-management-services" overwrite="true">
+			<fileset dir="/etc/cas/cas-management-services" includes="**/*" />
+		</copy>
+	</target>
+
 	<target name="tomcat_deploy">
 		<exec executable="/bin/bash">
 			<arg value="tomcat.sh"/>
