@@ -1,0 +1,29 @@
+{
+  "@class" : "org.jasig.cas.services.RegexRegisteredService",
+  "serviceId" : "https://localhost:8443/app-one/login/cas",
+  "name" : "app-one",
+  "id" : 515874701705101,
+  "description" : "app-one",
+  "proxyPolicy" : {
+    "@class" : "org.jasig.cas.services.RefuseRegisteredServiceProxyPolicy"
+  },
+  "evaluationOrder" : 1,
+  "usernameAttributeProvider" : {
+    "@class" : "org.jasig.cas.services.DefaultRegisteredServiceUsernameProvider"
+  },
+  "logoutType" : "NONE",
+  "attributeReleasePolicy" : {
+    "@class" : "org.jasig.cas.services.ReturnAllAttributeReleasePolicy",
+    "principalAttributesRepository" : {
+      "@class" : "org.jasig.cas.authentication.principal.DefaultPrincipalAttributesRepository"
+    },
+    "authorizedToReleaseCredentialPassword" : false,
+    "authorizedToReleaseProxyGrantingTicket" : false
+  },
+  "accessStrategy" : {
+    "@class" : "org.jasig.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true,
+    "requireAllAttributes" : false
+  }
+}
